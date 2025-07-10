@@ -2,24 +2,20 @@
 const prompt = require("prompt-sync")()
 
 //Calculator
-let num1;
-let num2;
-while(true){
-    num1 = parseFloat(prompt("Enter the First num : "))
-    if(isNaN(num1)){
-        console.log("Invalid Input")
-    }else{
-        break
+
+function getNumber(numberString) {
+    while(true){
+        const num = parseFloat(prompt("Enter the number : "+ numberString+ ": "))
+        if(isNaN(num)){
+            console.log("Invalid Input")
+        }else{
+            return num
+        }
     }
 }
-while(true){
-    3num2 = parseFloat(prompt("Enter the Second num : "))
-    if(isNaN(num2)){
-        console.log("Invalid input")
-    }else{
-        break
-    }
-}
+const num2 = getNumber("One");
+const num1 = getNumber("Two");
+
 const operator = prompt("Enter sign : ")
 
 let result;
@@ -35,6 +31,10 @@ switch(operator){
         result = num1 + num2
         break;
     case "/":
+        if(num1===0){
+            valid=false
+            console.log("Invalid")
+        }
         result = num1 + num2
         break;     
     default:
@@ -43,3 +43,4 @@ switch(operator){
         break;
 }   
 console.log(result);
+
